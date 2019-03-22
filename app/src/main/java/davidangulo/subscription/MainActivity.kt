@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun startConectionBillingClient() {
+    private fun startConectionBillingClient() {
         mBillingClient.startConnection(object : BillingClientStateListener {
             override fun onBillingSetupFinished(@BillingClient.BillingResponse billingResponseCode: Int) {
                 if (billingResponseCode == BillingClient.BillingResponse.OK) {
@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Must return purchased list
-    fun purchasedItemslist() {
+    private fun purchasedItemslist() {
         mBillingClient.queryPurchaseHistoryAsync(
             SkuType.INAPP
         ) { responseCode, purchasesList ->
@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun purchaseProduct() {
+    private fun purchaseProduct() {
 
         val flowParams = BillingFlowParams.newBuilder()
             .setSku("product_1")
@@ -124,13 +124,13 @@ class MainActivity : AppCompatActivity() {
         val responseCode = mBillingClient.launchBillingFlow(this, flowParams)
     }
 
-    fun purchaseSubscription() {
+    private fun purchaseSubscription() {
         val builder = BillingFlowParams.newBuilder()
             .setSku("sub_1").setType(BillingClient.SkuType.SUBS)
         val responseCode = mBillingClient.launchBillingFlow(this, builder.build())
     }
 
-    fun setButtonListener() {
+    private fun setButtonListener() {
         btn_buy.setOnClickListener {
             purchaseProduct()
             initializeBillingClient()
