@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Subscription</string>
+    <string name="btn_buy">buy</string>
+    <string name="btn_subscribe">Subscribe</string>
+</resources>
